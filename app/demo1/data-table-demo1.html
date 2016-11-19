@@ -1,0 +1,61 @@
+<div style="margin: auto; max-width: 1000px; margin-bottom: 50px;">
+    <data-table id="persons-grid"
+        headerTitle="Honorare"
+        [items]="items"
+        [itemCount]="itemCount"
+        (reload)="reloadItems($event)"
+        [sortBy]="'status'"
+
+		
+        (rowClick)="rowClick($event)"
+        (rowDoubleClick)="rowDoubleClick($event)"
+        [rowColors]="rowColors"
+        >
+        <data-table-column
+            [property]="'status'"
+            [header]="'Status'"
+            [width]="100"
+			[sortable]="true"
+            [resizable]="true">
+            <template #dataTableHeader let-item="item">
+                <span style="color: rgb(232, 0, 0)">Status</span>
+            </template>
+            <template #dataTableCell let-item="item">
+                <input type="checkbox" [(ngModel)]="item.status" (ngModelChange)="onChange($event)"/>
+            </template>
+        </data-table-column>
+        <data-table-column
+            [property]="'vorname'"
+            [header]="'Vorname'"
+            [sortable]="true"
+            [resizable]="true">
+        </data-table-column>
+		    <data-table-column
+            [property]="'nachname'"
+            [header]="'Nachname'"
+            [sortable]="true"
+            [resizable]="true">
+        </data-table-column>
+		  <data-table-column
+            [property]="'art'"
+            [header]="'Zahlungsart'"
+            [sortable]="true"
+            [resizable]="true">
+        </data-table-column>
+		<data-table-column
+            [property]="'betrag'"
+            [header]="'Betrag'"
+            [sortable]="true"
+            [resizable]="true">
+        </data-table-column>
+        <data-table-column
+            [property]="'date'"
+            [header]="'Datum'"
+            [sortable]="true">
+            <template #dataTableCell let-item="item">
+                <span>{{item.date | date:'yyyy-MM-dd'}}</span>
+            </template>
+        </data-table-column>
+
+    </data-table>
+</div>
